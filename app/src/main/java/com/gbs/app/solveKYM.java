@@ -20,39 +20,39 @@ public class solveKYM {
                 new Transaction(alan, 2012, 950)
         );
         
-    	System.out.println("1. 2011³â¿¡ ÀÏ¾î³­ ¸ðµç Æ®·£Àè¼ÇÀ» Ã£¾Æ °ªÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤¸®ÇÏ½Ã¿À.");
+    	System.out.println("1. 2011ë…„ì— ì¼ì–´ë‚œ ëª¨ë“  íŠ¸ëžœìž­ì…˜ì„ ì°¾ì•„ ê°’ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë¦¬í•˜ì‹œì˜¤.");
     	transactions.stream().filter(t -> t.getYear() == 2011).sorted(Comparator.comparing(Transaction::getValue)).forEach(t -> System.out.println(t.getValue()));
-    	// filter : Á¶°Ç¿¡ ¸Â´Â µ¥ÀÌÅÍ¸¸ ÃßÃâ
-    	// sorted : Á¤·Ä ¾ËÆÄºª ¼ø Á¤·Ä? ¾È¿¡ ³»¿ë¹°ÀÌ °´Ã¼ÀÌ¸é Comparator.comparingÀ» »ç¿ëÇÏ¿© °´Ã¼::ÇÔ¼ö¸í ¿Í °°Àº ÇüÅÂ·Î »ç¿ëÇÒ ¼ö ÀÖ´Ù? ex)Comparator.comparing(String::length)
-    	// Ãâ·ÂÀ» À§ÇØ¼­´Â ÃÖÁ¾¿¬»êÀÚ·Î forEach(x -> sysout)Ã³¸® ÇÒ ¼ö ÀÖÀ½.
-    	// ÇÊÅÍ·Î year°¡ 2011ÀÎ°Í¸¸ °¡Á®¿Í¼­ sorted¸¦ ÅëÇØ °ªÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä  
-    	System.out.println("\n2. °Å·¡ÀÚ°¡ ±Ù¹«ÇÏ´Â ¸ðµç µµ½Ã¸¦ Áßº¹¾øÀÌ ³ª¿­ÇÏ½Ã¿À.");
+    	// filter : ì¡°ê±´ì— ë§žëŠ” ë°ì´í„°ë§Œ ì¶”ì¶œ
+    	// sorted : ì •ë ¬ ì•ŒíŒŒë²³ ìˆœ ì •ë ¬? ì•ˆì— ë‚´ìš©ë¬¼ì´ ê°ì²´ì´ë©´ Comparator.comparingì„ ì‚¬ìš©í•˜ì—¬ ê°ì²´::í•¨ìˆ˜ëª… ì™€ ê°™ì€ í˜•íƒœë¡œ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤? ex)Comparator.comparing(String::length)
+    	// ì¶œë ¥ì„ ìœ„í•´ì„œëŠ” ìµœì¢…ì—°ì‚°ìžë¡œ forEach(x -> sysout)ì²˜ë¦¬ í•  ìˆ˜ ìžˆìŒ.
+    	// í•„í„°ë¡œ yearê°€ 2011ì¸ê²ƒë§Œ ê°€ì ¸ì™€ì„œ sortedë¥¼ í†µí•´ ê°’ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬  
+    	System.out.println("\n2. ê±°ëž˜ìžê°€ ê·¼ë¬´í•˜ëŠ” ëª¨ë“  ë„ì‹œë¥¼ ì¤‘ë³µì—†ì´ ë‚˜ì—´í•˜ì‹œì˜¤.");
     	transactions.stream().map(t -> t.getTrader().getCity()).distinct().forEach(t -> System.out.println(t));
-    	// map : ½ºÆ®¸²ÀÇ ¿ä¼Ò¸¦ º¯È¯ÇÑ´Ù?
-    	// distinct : Áßº¹ Á¦°Å
-    	// mapÀ¸·Î µµ½Ã¸íÀ» °¡Á®¿Í¼­ distinct¸¦ ÅëÇØ Áßº¹À» Á¦°Å
-    	System.out.println("\n3. ÄÉÀÓºê¸´Áö¿¡¼­ ±Ù¹«ÇÏ´Â ¸ðµç °Å·¡ÀÚ¸¦ Ã£¾Æ¼­ ÀÌ¸§¼øÀ¸·Î Á¤·ÄÇÏ½Ã¿À.");
+    	// map : ìŠ¤íŠ¸ë¦¼ì˜ ìš”ì†Œë¥¼ ë³€í™˜í•œë‹¤?
+    	// distinct : ì¤‘ë³µ ì œê±°
+    	// mapìœ¼ë¡œ ë„ì‹œëª…ì„ ê°€ì ¸ì™€ì„œ distinctë¥¼ í†µí•´ ì¤‘ë³µì„ ì œê±°
+    	System.out.println("\n3. ì¼€ìž„ë¸Œë¦¿ì§€ì—ì„œ ê·¼ë¬´í•˜ëŠ” ëª¨ë“  ê±°ëž˜ìžë¥¼ ì°¾ì•„ì„œ ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì‹œì˜¤.");
     	transactions.stream().filter(t -> t.getTrader().getCity().equals("Cambridge")).map(t -> t.getTrader().getName()).distinct().sorted().forEach(t -> System.out.println(t));
-    	// filter·Î ÄÉÀÓºê¸´Áö¿¡¼­ ±Ù¹«ÇÏ´Â Æ®·£Àè¼ÇÀ» Ã£¾Æ mapÀ¸·Î ±×Áß¿¡ ÀÌ¸§À» °¡Á®¿À°í distinct·Î Áßº¹À»Á¦°ÅÇÏ°í sorted·Î ¿À¸§Â÷¼ø Á¤·Ä 
-    	System.out.println("\n4. ¸ðµç °Å·¡ÀÚÀÇ ÀÌ¸§À» ¾ËÆÄºª¼øÀ¸·Î Á¤·ÄÇØ¼­ ¹ÝÈ¯ÇÏ½Ã¿À.");
+    	// filterë¡œ ì¼€ìž„ë¸Œë¦¿ì§€ì—ì„œ ê·¼ë¬´í•˜ëŠ” íŠ¸ëžœìž­ì…˜ì„ ì°¾ì•„ mapìœ¼ë¡œ ê·¸ì¤‘ì— ì´ë¦„ì„ ê°€ì ¸ì˜¤ê³  distinctë¡œ ì¤‘ë³µì„ì œê±°í•˜ê³  sortedë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ 
+    	System.out.println("\n4. ëª¨ë“  ê±°ëž˜ìžì˜ ì´ë¦„ì„ ì•ŒíŒŒë²³ìˆœìœ¼ë¡œ ì •ë ¬í•´ì„œ ë°˜í™˜í•˜ì‹œì˜¤.");
     	transactions.stream().map(t -> t.getTrader().getName()).distinct().sorted().forEach(t -> System.out.println(t));
-    	// mapÀ¸·Î ÀÌ¸§À» °¡Á®¿Í¼­ distinct·Î Áßº¹Á¦°Å ÈÄ sorted·Î ¿À¸§Â÷¼ø Á¤·Ä
-    	System.out.println("\n5. ¹Ð¶ó³ë¿¡ °Å·¡ÀÚ°¡ ÀÖ´Â°¡?");
-    	if(transactions.stream().filter(t -> t.getTrader().getCity().equals("Milan")).count() > 0 ) System.out.println("¹Ð¶ó³ë¿¡ °Å·¡ÀÚ°¡ ÀÖ´Ù.");
-    	else System.out.println("¹Ð¶ó³ë¿¡ °Å·¡ÀÚ°¡ ¾ø´Ù.");
+    	// mapìœ¼ë¡œ ì´ë¦„ì„ ê°€ì ¸ì™€ì„œ distinctë¡œ ì¤‘ë³µì œê±° í›„ sortedë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
+    	System.out.println("\n5. ë°€ë¼ë…¸ì— ê±°ëž˜ìžê°€ ìžˆëŠ”ê°€?");
+    	if(transactions.stream().filter(t -> t.getTrader().getCity().equals("Milan")).count() > 0 ) System.out.println("ë°€ë¼ë…¸ì— ê±°ëž˜ìžê°€ ìžˆë‹¤.");
+    	else System.out.println("ë°€ë¼ë…¸ì— ê±°ëž˜ìžê°€ ì—†ë‹¤.");
     	System.out.println(transactions.stream().anyMatch(t -> t.getTrader().getCity().equals("Milan")));
-    	// count : ¸®½ºÆ®ÀÇ °³¼ö¸¦ ¹ÝÈ¯?
-    	// anyMatch ¸ÅÄªµÇ´Â°Ô ÀÖ´ÂÁö È®ÀÎ?
-    	System.out.println("\n6. ÄÉÀÓºê¸®Áö¿¡¼­ °ÅÁÖÇÏ´Â °Å·¡ÀÚÀÇ ¸ðµç Æ®·£Àè¼Ç°ªÀ» Ãâ·ÂÇÏ½Ã¿À.");
+    	// count : ë¦¬ìŠ¤íŠ¸ì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜?
+    	// anyMatch ë§¤ì¹­ë˜ëŠ”ê²Œ ìžˆëŠ”ì§€ í™•ì¸?
+    	System.out.println("\n6. ì¼€ìž„ë¸Œë¦¬ì§€ì—ì„œ ê±°ì£¼í•˜ëŠ” ê±°ëž˜ìžì˜ ëª¨ë“  íŠ¸ëžœìž­ì…˜ê°’ì„ ì¶œë ¥í•˜ì‹œì˜¤.");
     	transactions.stream().filter(t -> t.getTrader().getCity().equals("Cambridge")).forEach(t -> System.out.println(t.getValue()));
-    	// filter·Î ÄÉÀÓºê¸´Áö¿¡ »ç´Â »ç¶÷¸¸ Ã£¾Æ¼­ Á¶È¸
-    	System.out.println("\n7. ÀüÃ¼ Æ®·£Àè¼Ç Áß ÃÖ´ñ°ªÀº ¾ó¸¶ÀÎ°¡?");
+    	// filterë¡œ ì¼€ìž„ë¸Œë¦¿ì§€ì— ì‚¬ëŠ” ì‚¬ëžŒë§Œ ì°¾ì•„ì„œ ì¡°íšŒ
+    	System.out.println("\n7. ì „ì²´ íŠ¸ëžœìž­ì…˜ ì¤‘ ìµœëŒ“ê°’ì€ ì–¼ë§ˆì¸ê°€?");
     	System.out.println(transactions.stream().mapToInt(t -> t.getValue()).max().getAsInt());
-    	// mapToInt : mapÀÌ¶û °°ÀÌ ½ºÆ®¸²ÀÇ ¿ä¼Ò¸¦ ¹ÝÈ¯ÇÏ´Âµ¥ int·Î ¹ÝÈ¯ÇÑ´Ù?
-    	// max ÃÖ´ë°ª ±¸ÇÏ±â
-    	System.out.println("\n8. ÀüÃ¼ Æ®·£Àè¼Ç Áß ÃÖ¼Ú°ªÀº ¾ó¸¶ÀÎ°¡?");
+    	// mapToInt : mapì´ëž‘ ê°™ì´ ìŠ¤íŠ¸ë¦¼ì˜ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ”ë° intë¡œ ë°˜í™˜í•œë‹¤?
+    	// max ìµœëŒ€ê°’ êµ¬í•˜ê¸°
+    	System.out.println("\n8. ì „ì²´ íŠ¸ëžœìž­ì…˜ ì¤‘ ìµœì†Ÿê°’ì€ ì–¼ë§ˆì¸ê°€?");
     	System.out.println(transactions.stream().mapToInt(t -> t.getValue()).min().getAsInt());
-    	// min ÃÖ¼Ò°ª ±¸ÇÏ±â
+    	// min ìµœì†Œê°’ êµ¬í•˜ê¸°
     }
 
     public static void main(String[] args) {
