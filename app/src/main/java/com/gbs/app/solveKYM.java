@@ -52,7 +52,7 @@ public class solveKYM {
     	// max 최대값 구하기
     	System.out.println("\n8. 전체 트랜잭션 중 최솟값은 얼마인가?");
     	System.out.println(transactions.stream().mapToInt(t -> t.getValue()).min().getAsInt());
-    	// min 최소값 구하기
+    	// min 최소값 구 하기   
     }
 
     public static void main(String[] args) {
