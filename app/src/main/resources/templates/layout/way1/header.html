@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- 방법1 : 개발한 화면에서 특정 HTML을 가져다 쓴다 -->
+    <header th:fragment="basicHeader">
+        <div style="background: bisque">
+            여기는 헤더입니다 ^^
+        </div>
+        <hr>
+    </header>
+
+    <header th:fragment="customHeader(div, ul)">
+        <div style="background: aquamarine">
+            여기는 헤더입니다 ^^
+        </div>
+        <th:block th:replace="${div}">
+            <th:block th:replace="${ul}" />
+        </th:block>
+        <hr>
+    </header>
+
+</body>
+</html>
