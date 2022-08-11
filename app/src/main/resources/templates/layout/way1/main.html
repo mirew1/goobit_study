@@ -17,8 +17,10 @@
 <!--            <div style="background: cornflowerblue">안녕하세요</div>-->
 <!--        </div>-->
 <!--    </th:block>-->
+    <th:block th:replace="~{layout/way1/left :: basicLeft}"/>
     메인 내용입니다.
     [[${result}]]
 
+    <footer th:replace="~{layout/way1/footer :: basicFooter}"></footer>
 </body>
 </html>
