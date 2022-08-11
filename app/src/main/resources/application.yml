@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1522:XE
+    username: devuser
+    password: 1234
+
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+  config-location: classpath:/mybatis/mybatis-config.xml
+
+server:
+  port: 80
