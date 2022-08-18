@@ -1,0 +1,28 @@
+spring:
+  profiles :
+    active : "siwon"
+    
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+      
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1522/xe
+    username: devuser
+    password: 1234
+    
+server:
+  port: 81
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations:
+    - classpath:mappers/**/*.xml
+
+# 첨부파일 저장 경로
+file:
+  filePath: C:\\dev\\file\\
+  fileDomain : /
+  tempPath: C:\\dev\\tmp\\

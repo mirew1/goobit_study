@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/lib/jquery-3.4.1.min.js"></script>
+	<script src="/js/lib/jquery-ui.min.js"></script>
+</head>
+<body>
+<div class="display:none;">
+	<input type="file"/>
+</div>
+<ul>
+    <li>안드로이드 테스트
+        <ul>
+            <li><a href="javascript:fileChooser();">갤러리</a></li>
+            <br/>
+            <li><a href="javascript:camera();">기본 카메라</a></li>
+            <br/>
+            <li><a href="javascript:camera2();">영역 카메라</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+	var camera = 1;
+	
+	// 카메라 권한요청
+	function camera(){
+		camera = 1;
+		$('input[type=file]').val(null).click();
+		commonService.cameraPermission();
+	}
+	
+	function camera2(){
+		camera = 2;
+		$('input[type=file]').val(null).click();
+		commonService.cameraPermission();
+	}
+	
+	// 카메라 권한 정상인경우 처리(카메라 오픈)
+	function successCameraPermission (){
+		if(camera == 1){
+			commonService.startCamera();
+		}else if(camera == 2){
+			commonService.startCamera2();
+		}
+	}
+	
+	// 갤러리
+	function fileChooser(){
+		$('input[type=file]').click();
+		commonService.showFileChooser(1);
+	}
+	
+	commonService.resetFileChooser();
+	$('input[type=file]').on('change', function(){
+	    console.log($(this)[0].files[0].name + " / "+$(this)[0].files[0].size);
+	});
+</script>
+</body>
+</html>
