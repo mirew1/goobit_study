@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WAY1 방식 템플릿 이용</title>
+</head>
+<body>
+    <th:block th:replace="~{layout/way1/header :: basicHeader}" />
+    <th:block th:replace="~{layout/way1/left :: basicLeft}"/>
+
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>비밀번호</th>
+            <th>이름</th>
+            <th>핸드폰번호</th>
+            <th>닉네임</th>
+        </tr>
+        <tr th:each="result : ${contentsList}">
+            <td th:text="${result.id}"></td>
+            <td th:text="${result.password}"></td>
+            <td th:text="${result.name}"></td>
+            <td th:text="${result.phone} ?: '등록된 번호가 없습니다.'"></td>
+            <td th:text="${result.nickName}"></td>
+        </tr>
+    </table>
+    <footer th:replace="~{layout/way1/footer :: basicFooter}"></footer>
+</body>
+</html>
