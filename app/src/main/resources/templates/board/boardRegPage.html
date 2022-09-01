@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WAY1 방식 템플릿 이용</title>
+
+    <script type="text/javascript" th:inline="javascript">
+        function fnGoReg() {
+            if(confirm('등록할래?')) {
+                $.ajax({
+                    type : "POST" ,
+                    url : "/board/insertBoard",
+                    dataType : 'json',
+                    data : $('#frm').serialize() ,
+                    success : function(data) {
+                        if (data.result == 'S') {
+                            alert("성공");
+                        }else {
+                            alert("귀찮으니까 그냥 여기서 append 테스트 할꺼야");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("오류가 발생하였습니다.");
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <th:block th:replace="~{layout/way1/header :: basicHeader}" />
+    <th:block th:replace="~{layout/way1/left :: basicLeft}"/>
+
+    <form name="frm" id="frm">
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td>
+                <input type="text" name="usrId">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td>
+                <input type="text" name="passWd">
+            </td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td>
+                <input type="text" name="usrNm">
+            </td>
+        </tr>
+        <tr>
+            <td>핸드폰번호</td>
+            <td>
+                <input type="text" name="usrMob">
+            </td>
+        </tr>
+        <tr>
+            <td>닉네임</td>
+            <td>
+                <input type="text" name="nckNm">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <button onclick="fnGoReg();">등록</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <footer th:replace="~{layout/way1/footer :: basicFooter}"></footer>
+</body>
+</html>

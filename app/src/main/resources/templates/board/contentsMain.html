@@ -17,11 +17,16 @@
             <th>닉네임</th>
         </tr>
         <tr th:each="result : ${contentsList}">
-            <td th:text="${result.id}"></td>
-            <td th:text="${result.password}"></td>
-            <td th:text="${result.name}"></td>
-            <td th:text="${result.phone} ?: '등록된 번호가 없습니다.'"></td>
-            <td th:text="${result.nickName}"></td>
+            <td th:text="${result.usrId}"></td>
+            <td th:text="${result.passWd}"></td>
+            <td th:text="${result.usrNm}"></td>
+            <td th:text="${result.usrMob}?: _">등록된 번호가 없습니다.</td>
+            <td th:text="${result.nckNm}"></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <a href="#" th:href="@{/board/reg}" th:text="등록">이동</a>
+            </td>
         </tr>
     </table>
     <footer th:replace="~{layout/way1/footer :: basicFooter}"></footer>

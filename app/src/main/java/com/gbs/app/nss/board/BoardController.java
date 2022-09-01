@@ -1,10 +1,12 @@
 package com.gbs.app.nss.board;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;
@@ -27,5 +29,15 @@ public class BoardController {
         List<BoardDTO> contentsList = boardService.selectBoardContentsList();
         model.addAttribute("contentsList", contentsList);
         return "board/contentsMain";
+    }
+
+    @GetMapping("/board/reg")
+    public String boardRegPage() {
+        return "board/boardRegPage";
+    }
+
+    @PostMapping("/board/insertBoard")
+    public ResponseEntity<Map<String, Object>> insertBoard() {
+        return null;
     }
 }
