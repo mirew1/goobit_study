@@ -9,6 +9,7 @@
 
     <typeAliases>
 <!--        <typeAlias type="nss.myboard.domain.login.domain.dto.LoginDto" alias="LoginDTO"/>-->
+        <typeAlias type="com.gbs.app.nss.board.BoardDTO" alias="BoardDTO"/>
     </typeAliases>
 
 </configuration>

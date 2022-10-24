@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>WAY1 방식 템플릿 이용</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        function fnShow(name) {
+            // 이렇게 했을 때, th:text는 적용되지 않음. -> 문자열 그대로 인식함
+            $('#target1').before('<tr><td th:text="'+name+'">이름없음</td></>tr>')
+
+        }
+    </script>
 </head>
 <body>
     <th:block th:replace="~{layout/way1/header :: basicHeader}" />
@@ -17,13 +26,13 @@
             <th>닉네임</th>
         </tr>
         <tr th:each="result : ${contentsList}">
-            <td th:text="${result.usrId}"></td>
-            <td th:text="${result.passWd}"></td>
+            <td th:text="${result.usrId}" th:onclick="fnShow([[${result.usrNm}]]);"></td>
+            <td th:text="${result.passwd}"></td>
             <td th:text="${result.usrNm}"></td>
             <td th:text="${result.usrMob}?: _">등록된 번호가 없습니다.</td>
             <td th:text="${result.nckNm}"></td>
         </tr>
-        <tr>
+        <tr id="target1">
             <td colspan="5">
                 <a href="#" th:href="@{/board/reg}" th:text="등록">이동</a>
             </td>

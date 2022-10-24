@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <title>WAY1 방식 템플릿 이용</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
         function fnGoReg() {
             if(confirm('등록할래?')) {
                 $.ajax({
                     type : "POST" ,
                     url : "/board/insertBoard",
+                    contentType : "application/json",
                     dataType : 'json',
-                    data : $('#frm').serialize() ,
+                    data : JSON.stringify($('#frm').serializeObject()),
                     success : function(data) {
-                        if (data.result == 'S') {
-                            alert("성공");
-                        }else {
-                            alert("귀찮으니까 그냥 여기서 append 테스트 할꺼야");
-                        }
+                        alert("성공");
                     },
                     error: function (xhr, status, error) {
                         alert("오류가 발생하였습니다.");
@@ -25,6 +23,27 @@
                 });
             }
         }
+
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+                    var arr = this.serializeArray();
+                    if (arr) {
+                        obj = {};
+                        jQuery.each(arr, function() {
+                            obj[this.name] = this.value;
+                        });
+                    }//if ( arr ) {
+                }
+            } catch (e) {
+                alert(e.message);
+            } finally {
+            }
+
+            return obj;
+        };
+
     </script>
 </head>
 <body>
@@ -36,36 +55,48 @@
         <tr>
             <td>아이디</td>
             <td>
-                <input type="text" name="usrId">
+                <!--
+                    input 태그 안에 th:text 하면 값이 있어도 치환되지 않음
+                    ex) <input type="text" name="usrId" th:value="${data.usrId}" th:text="${data.usrId}"> 안녕하세요
+                            -> ${data.usrId} 값이 있는 경우 : "해당값 안녕하세요" ('해당값'으로 '안녕하세요'가 치환되지 않음)
+                            -> ${data.usrId} 값이 없는 경우 : "안녕하세요"
+                -->
+                <input type="text" name="usrId" th:value="${data.usrId}">
+                <span th:text="${data.usrId}">등록화면 초기 진입</span>
             </td>
         </tr>
         <tr>
             <td>비밀번호</td>
             <td>
-                <input type="text" name="passWd">
+                <input type="text" name="passwd" th:value="${data.passwd}">
+                <span th:text="${data.passwd}">등록화면 초기 진입</span>
             </td>
         </tr>
         <tr>
             <td>이름</td>
             <td>
-                <input type="text" name="usrNm">
+                <input type="text" name="usrNm" th:value="${data.usrNm}">
+                <span th:text="${data.usrNm}">등록화면 초기 진입</span>
             </td>
         </tr>
         <tr>
             <td>핸드폰번호</td>
             <td>
-                <input type="text" name="usrMob">
+                <input type="text" name="usrMob" th:value="${data.usrMob}">
+                <span th:text="${data.usrMob}">등록화면 초기 진입</span>
             </td>
         </tr>
         <tr>
             <td>닉네임</td>
             <td>
-                <input type="text" name="nckNm">
+                <input type="text" name="nckNm" th:value="${data.nckNm}">
+                <span th:text="${data.nckNm == '성이름' ? _ : data.nckNm}">등록화면 초기 진입</span>
             </td>
         </tr>
         <tr>
             <td colspan="5">
                 <button onclick="fnGoReg();">등록</button>
+                <a th:href="@{/board/boardMain}">목록</a>
             </td>
         </tr>
     </table>

@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 @Slf4j
 @Service
@@ -32,5 +30,10 @@ public class BoardService {
         log.info("fake2 :: {}", fake2.toString());
         log.info("fake6 :: {}", fake6.toString());
         return Arrays.asList(fake1,fake2,fake3,fake4,fake5, fake6);
+    }
+
+    public Map<String, Object> insertBoard(BoardDTO boardDTO) {
+        boardMapper.insertBoard(boardDTO);
+        return Map.of();
     }
 }
