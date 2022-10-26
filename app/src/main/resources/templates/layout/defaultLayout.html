@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, links, contents, others)">
+	<head>
+		<title th:replace="${title}">스터디 공통 레이아웃</title>
+		<!-- 공통 -->
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/awesomeapp.css}">
+		<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+		<script type="text/javascript" th:src="@{/sh/scripts/codebase.js}"></script>
+		<script type="text/javascript" th:src="@{/js/lib/jquery-3.4.1.min.js}"></script>
+		<!-- 추가 -->
+		<th:block th:replace="${links}" />
+	</head>
+    <body>
+    	<div th:insert="~{fragments/header :: common_header}"></div>
+    	<section th:replace="${contents}">레이아웃 기본 컨텐츠</section>
+    	<div th:insert="~{fragments/footer :: common_footer}"></div>
+		<th:block th:replace="${others}" />
+    </body>
+</html>

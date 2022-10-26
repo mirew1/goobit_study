@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ 	<footer th:fragment="common_footer">
+ 		공통푸터
+ 	</footer>
+ 	
+    <footer class="footer" th:fragment="login_footer(param1, param2)">
+        <h2>로그인 페이지용 푸터</h2>
+        <span th:text="파람1공백아님" th:if="${param1 != ''}"></span>
+        <span th:text="${param2}" th:if="${param2 != ''}"></span>
+    </footer>
+    
+</html>

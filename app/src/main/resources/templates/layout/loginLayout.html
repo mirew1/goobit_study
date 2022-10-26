@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, links, contents)">
+	<head>
+		<title th:replace="${title}">스터디</title>
+		<!-- 공통 -->
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/awesomeapp.css}">
+		<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+		<script type="text/javascript" th:src="@{/sh/scripts/codebase.js}"></script>
+		<!-- 추가 -->
+		<th:block th:replace="${links}" />
+	</head>
+    <body>
+    	<div th:insert="~{fragments/header :: login_header}"></div>
+    	<section th:replace="${contents}">로그인 내용</section>
+    	<div th:insert="~{fragments/footer :: login_footer('', '짜잔파람2입니다')}"></div>
+    </body>
+</html>

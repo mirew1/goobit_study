@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/loginLayout :: layout(~{::title}, ~{::link}, ~{::contents})}">
+
+	<title>그거</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
+	
+	<div class="wrep" th:fragment="contents">
+		<input type="text" name="id"/>
+		<input type="password" name="pwd"/>
+	</div>
+	
+</html>
