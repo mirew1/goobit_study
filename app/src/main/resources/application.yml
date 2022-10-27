@@ -1,28 +1,17 @@
 spring:
-  profiles :
-    active : "siwon"
-    
-  servlet:
-    multipart:
-      max-file-size: 1GB
-      max-request-size: 1GB
-      
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1522/xe
+    url: jdbc:oracle:thin:@localhost:1522:XE
     username: devuser
     password: 1234
-    
-server:
-  port: 81
+
+  thymeleaf:
+    cache: false
+
 
 mybatis:
-  config-location: classpath:mybatis-config.xml
-  mapper-locations:
-    - classpath:mappers/**/*.xml
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+  config-location: classpath:/mybatis/mybatis-config.xml
 
-# 첨부파일 저장 경로
-file:
-  filePath: C:\\dev\\file\\
-  fileDomain : /
-  tempPath: C:\\dev\\tmp\\
+server:
+  port: 80
