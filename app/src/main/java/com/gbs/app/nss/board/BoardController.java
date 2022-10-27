@@ -33,7 +33,7 @@ public class BoardController {
 
     /**
      *      1. Ajax 요청 후 location.reload가 없어도 다시 해당 페이지 재 요청함.
-     *          - Ajax 등록 처리 완료 후 input 값이 날라가는 현상이 발생
+     *          - Ajax 등록 처리 완료 후 input 값이 날라가는 현상이 발생 (-> <Button type="button"></Button> 타입을 적어주면 됨.. 기본이 submit인듯..?)
      *          - 빌더패턴으로 인해 @ModelAttribute를 사용할 수 없어 @RequestParam 붙인 Map을 사용
      *          - 빌더를 쓰면서 @ModelAttribute 쓸 수 있는 방법? -> 없는듯. @ModelAttribute는 동작 원리에 따라 @Setter 없이는 불가능
      */
