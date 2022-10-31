@@ -2,8 +2,10 @@ package com.gbs.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
-@SpringBootApplication
+@EnableRedisHttpSession(redisNamespace="myredis") // Redis에 세션 보관 설정
+@SpringBootApplication(scanBasePackages = "com.gbs.app.nss")
 public class AppApplication {
 
 	public static void main(String[] args) {
