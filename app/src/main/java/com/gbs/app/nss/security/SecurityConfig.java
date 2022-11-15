@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -58,15 +59,6 @@ public class SecurityConfig {
 	@Autowired
 	LoginService loginService;
 	
-	@Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withUsername("user")
-            .password("{noop}password")
-            .roles("USER")
-            .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-	
 	
 	@Bean
     public WebSecurityCustomizer configure() {
@@ -84,6 +76,7 @@ public class SecurityConfig {
 				.authorizeRequests()
 					.antMatchers("/board").hasRole("USER")
 					.antMatchers("/").permitAll()
+					.antMatchers("/lgn/form", "/lgn/lgn").permitAll()
 					.anyRequest().authenticated()
 					
 				// 로그인 설정
@@ -127,6 +120,7 @@ public class SecurityConfig {
 				
 			.and()
 				.addFilterAfter(new CustomRememberMeExceptionFilter(), SecurityContextHolderAwareRequestFilter.class)
+				.authenticationProvider(authProvider())
 				.build();
 	}
 	
@@ -161,8 +155,8 @@ public class SecurityConfig {
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
         jdbcTokenRepository.setDataSource(dataSource);
-        jdbcTokenRepository.setCreateTableOnStartup(true); // 리멤버미 테이블 생성 (한번 실행 수 false로 돌리자)
-//        jdbcTokenRepository.setCreateTableOnStartup(false);
+//        jdbcTokenRepository.setCreateTableOnStartup(true); // 리멤버미 테이블 생성 (한번 실행 수 false로 돌리자)
+        jdbcTokenRepository.setCreateTableOnStartup(false);
         return jdbcTokenRepository;
     }
     

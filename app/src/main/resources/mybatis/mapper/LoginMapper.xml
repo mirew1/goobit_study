@@ -4,7 +4,7 @@
 <mapper namespace="com.gbs.app.nss.login.mapper.LoginMapper">
 
     <select id="selectUser" parameterType="String" resultType="UserDTO">
-        SELECT '123' FROM dual
+        SELECT A.*, 'ROLE_USER' AUTH_CD FROM MHS_USR A WHERE A.USR_ID = #{usrId}
     </select>
     
     <!-- remember-me 유효시간 초과 시 삭제 -->

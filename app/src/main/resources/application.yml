@@ -16,7 +16,7 @@ spring:
         max-idle: 10 # 커넥션 해제 없이 최대 연결 수
         min-idle: 5 # 커넥션 추가 생성 없이 최소 연결 수 
     port: 6379
-    host: 9bit.iptime.org
+    host: localhost
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/**/*.xml

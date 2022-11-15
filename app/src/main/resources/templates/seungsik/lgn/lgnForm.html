@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- <html xmlns:th="http://www.thymeleaf.org" -->
+<!-- 	th:replace="~{layout/defaultLayout :: layout(~{::title}, ~{::link}, ~{::contents}, ~{::others})}"> -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<title>로그인폼</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript" th:inline="javascript">
+		function login() {
+			$.ajax({
+				url : '/lgn/lgn',
+				method : 'POST',
+				dataType : 'JSON',
+				data : $('#frmLogin').serialize(),
+				success : function(data) {
+					if(data.isSuccess){
+						// 로그인 성공 시
+						location.href= /*[[@{/board/boardMain}]]*/ '';
+					}else{
+						if (data.target == 'none') {
+							alert('탈퇴 처리된 아이디 입니다.');
+							return;
+						} else if (data.target == 'temp') { // 임시비밀번호
+							alert('임시비밀번호입니다.');
+						} else if (data.target == 'id') {
+							alert('아이디를 확인해주세요.');
+						} else {
+							alert('비밀번호를 확인해주세요.');
+						}
+						
+					}
+				}
+			});
+		}
+	</script>
+	
+	<form action="/lgn/lgn" method="post" id="frmLogin">
+		<input type="checkbox" id="remember-me" name="remember-me" checked style="display: none;">
+		<div class="wrep" th:fragment="contents">
+			<input type="text" id="id" name="usrId" required />
+			<input type="password" id="pw" name="passwd" placeholder="비밀번호를 입력하세요." required>
+		</div>
+		<button type="button" onclick="login();">로그인</button>
+	</form>
+</html>
