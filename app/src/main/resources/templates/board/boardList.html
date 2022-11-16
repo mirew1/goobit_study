@@ -2,24 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/defaultLayout :: layout(~{::title}, ~{::link}, ~{::contents}, ~{::others})}">
 
-	<title>게시판 타이틀</title>
+	<title>게시판의 타이틀</title>
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
 	
 	<div class="wrep" th:fragment="contents">
-		<div id="commentTable">
+		<div class="commentTable">
 			<div th:each="map : ${list}" >
-				<span th:text="'key1 : '+${map.key1}">키 1데이터</span> /
-				<span th:text="'key2 : '+${map.key2}">key2 데이터</span>
+				<span th:text="'key1 : '+${map.key1}">그만</span> /
+				<span th:text="'key2 : '+${map.key2}">key2 해</span>
 			</div>
 		</div>
 		<div id="page">
 			<a
-				th:each="n : ${#numbers.sequence(1, 10)}"
+				th:each="n : |${#numbers.sequence(1, 10)}"
 				th:text="${n} + ' '"
 				th:no="${n}"
 				th:onclick="getList(this)">
-				페이지
+				왜자꾸
 			</a>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 		        data: {no:no},
 		    })
 		    .done(function (data) {
-		    	$('#commentTable').html(data);
+		    	$('.commentTable').replaceWith(data);
 		    });
 		}
 		</script>

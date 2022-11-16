@@ -28,11 +28,10 @@ public class BoardController {
 	 * return getList(no); }
 	 */
 	
-
 	@RequestMapping("/list")
 	public String list(Model model, String no) {
 		model.addAttribute("list", getList(no));
-		return "board/boardList :: #commentTable";
+		return "board/boardList :: .commentTable";
 	}
 	
 	private List<Map<String, Integer>> getList(String no) {

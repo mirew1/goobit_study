@@ -2,13 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/loginLayout :: layout(~{::title}, ~{::link}, ~{::contents})}">
 
-	<title>그거</title>
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<title>로그인의 타이틀</title>
+	
 	<link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
 	
-	<div class="wrep" th:fragment="contents">
-		<input type="text" name="id"/>
-		<input type="password" name="pwd"/>
+	<div class="container" th:fragment="contents">
+		<form class="form-signin" method="post" id="frmLogin">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<p>
+				<label for="username" class="sr-only">Username</label>
+				<input type="text" id="userId" name="userId" class="form-control" placeholder="Username" required="" autofocus="">
+			</p>
+			<p>
+				<label for="password" class="sr-only">Password</label>
+				<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+			</p>
+			<!-- <p>
+				<label class="chk">
+					<input type="checkbox" id="remember-me" name="remember-me">
+					<span>로그인 상태 유지</span>
+				</label>
+			</p> -->
+			<input name="_csrf" type="hidden" value="fc2f0d90-c7dd-4b28-aff0-049394ad3205">
+			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="login();">Sign in</button>
+		</form>
+		
+		<script th:inline="javascript">
+			function login(){
+				$.ajax({
+					url : [[@{/login/login}]],
+					method : 'POST',
+					dataType : 'JSON',
+					data : $('#frmLogin').serialize(),
+					success : function(data) {
+						if(data.isSuccess){
+							location.href = [[@{/}]]
+						}else{
+							alert('아이디 또는 비밀번호가 일치하지 않습니다.');						
+						}
+					}
+				});
+			}
+		</script>
+	
 	</div>
 	
 </html>

@@ -1,10 +1,21 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <header class="header" th:fragment="common_header">
-        <h2>공통 헤더입니다</h2>
-    </header>
-    
-    <header class="header" th:fragment="login_header">
-        <h2>로그인 헤더입니다</h2>
-    </header>
-    
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<header class="header" th:fragment="common_header">
+		<h2>공통 헤더입니다</h2>
+		<div sec:authorize="isAuthenticated()">
+			<a th:href="@{/login/logout}">로그아웃</a>
+			<div>
+				<th:block sec:authentication="principal.userNm">이름</th:block>님 반갑습니다!
+				(<th:block sec:authentication="name">user</th:block>)
+			</div>
+			<br/>
+		</div>
+	</header>
+	
+	<header class="header" th:fragment="login_header">
+		<h2>로그인 헤더입니다</h2>
+	</header>
+	
 </html>
+<a th:href="@{/hello}">
