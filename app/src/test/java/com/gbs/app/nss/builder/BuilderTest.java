@@ -1,4 +1,4 @@
-package com.gbs.app.builder;
+package com.gbs.app.nss.builder;
 
 import lombok.Builder;
 import lombok.Getter;

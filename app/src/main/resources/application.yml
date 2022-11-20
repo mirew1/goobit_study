@@ -18,6 +18,15 @@ spring:
     port: 6379
     host: localhost
 
+  jpa:
+    database: oracle
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    properties.hibernate:
+      ddl-auto: validate
+      format_sql: true
+    show-sql: true
+#    generate-ddl: true
+
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/**/*.xml
   config-location: classpath:/mybatis/mybatis-config.xml
