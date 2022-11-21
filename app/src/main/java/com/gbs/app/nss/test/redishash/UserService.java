@@ -5,16 +5,24 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Service
-//@RequiredArgsConstructor
+@Service
+@RequiredArgsConstructor
 public class UserService {
-//    private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-//    public TestUser save(TestUser testUser) {
-//        return (TestUser) userRepository.save(testUser);
-//    }
+    public TestUser save(TestUser testUser) {
+        return (TestUser) userRepository.save(testUser);
+    }
 
-//    public List<TestUser> findByUserNm(String userNm) {
-//        return userRepository.findByUserNm(userNm);
-//    }
+    public List<TestUser> findByUsrNm(String usrNm) {
+        return userRepository.findByUsrNm(usrNm);
+    }
+    
+    public TestUser findById(String usrId) throws Exception {
+    	return userRepository.findById(usrId).orElseThrow(Exception::new);
+    }
+    
+    public TestUser findByUsrNmAndUsrMob(String usrNm, String usrMob) throws Exception {
+    	return userRepository.findByUsrNmAndUsrMob(usrNm, usrMob).orElseThrow(Exception::new);
+    }
 }
