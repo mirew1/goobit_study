@@ -1,4 +1,4 @@
-package com.gbs.app.nss.redishash;
+package com.gbs.app.nss.redis.redishash;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
